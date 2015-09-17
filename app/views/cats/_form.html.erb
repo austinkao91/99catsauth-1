@@ -1,9 +1,10 @@
+<%= print cat %>
 <% action = (cat.persisted? ? cat_url(cat) : cats_url) %>
 <% method = (cat.persisted? ? :patch : :post) %>
 
 <form action="<%= action %>" method="post">
   <input type="hidden" name="_method" value="<%= method %>">
-
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"
   <label for="cat_name">Name</label>
   <input
     type="text"

@@ -16,6 +16,7 @@ class Cat < ActiveRecord::Base
     :color,
     :name,
     :sex,
+    :user_id,
     presence: true
   )
 
@@ -25,4 +26,12 @@ class Cat < ActiveRecord::Base
   def age
     time_ago_in_words(birth_date)
   end
+
+
+  belongs_to(
+    :owner,
+    class_name: "User",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
 end
